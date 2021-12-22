@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battleship Cafe</title>
+  <link rel="stylesheet" href="styles/style2.css">
+</head>
+<body>
+  <header class="box box-m box-s">
+    <div id="logo">
+      <a href="index.html" class="logo-btn">Battleships Open Seas</a>
+    </div>
+    <div class="col-2 col-m-1 col-s-0 sideGrad1">
+    </div>
+    <nav id="menus" class="col-10 col-m-11 col-s-12">
+      <a href="game.html" class="game-btn">PLAY !</a>
+      <div class="drop">
+        <div class="dropdown">
+          <button class="dropbtn">Player</button>
+          <div class="dropdown-content">
+            <a href="signup.html">Profile</a>
+            <a href="ranks.html">Standings</a>
+            <a href="#">Stats</a>
+          </div>
+        </div>
+        <div class="dropdown2">
+          <button class="dropbtn2">About</button>
+          <div class="dropdown-content2">
+            <a href="#">Development</a>
+            <a href="#">Disclaimers</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="box box-m box-s">
+    <div class="col-2 col-m-1 col-s-0 sideGrad2"></div>
+    <div id="signInForm" class="col-10 col-m-11 col-s-12"> 
+      <form action="action_page.php">
+        <div class="signMsg">
+          <p>Fill in the form below to register an account. If you already have one, <a href="#">sign in</a>. </p>
+        </div>
+        <div>
+          <label class="signLabel" for="email"><b>Email</b></label>
+          <input type="text" placeholder="example@domain.com" name="email" id="email" required>
+        </div>
+        <div>
+          <label class="signLabel" for="pswd"><b>Password</b></label>
+          <input type="password" placeholder="Password" name="pswd" id="pswd" required>
+        </div>
+        <div>
+          <label class="signLabel" for="pswdRepeat"><b>Repeat Password</b></label>
+          <input type="password" placeholder="Repeat Password" name="pswdRepeat" id="pswdRepeat" required>
+        </div>
+        <div>
+          <button type="submit" class="registerbtn">Register</button>
+        </div>
+      </form> 
+    </div>
+  </main>
+  <footer class="box box-m box-s">
+    <div class="col-2 col-m-1 col-s-0 sideGrad1"></div>
+    <div class="col-5 col-m-5 col-s-12">copyright info</div>
+    <div class="col-5 col-m-6 col-s-12">devs</div>
+  </footer>
+</body>
+</html> 

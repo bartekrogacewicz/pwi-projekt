@@ -1,0 +1,201 @@
+.gameBtn {
+  background-color: #0446aa;
+  padding: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#winner-info{
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  padding: 15px 15px 15px 15px;
+  font-size: 32px;
+  font-weight: bold;
+  font-variant: small-caps;
+}
+.game-info {
+  justify-content: center;
+  display: flex;
+  margin: auto;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#grid-info2,
+#grid-info1 {
+  display: flex;
+  font-variant: small-caps;
+  font-size: 12px;
+  justify-content: center;
+}
+
+.grid-box {
+  display: flex;
+  flex-direction: column;
+  border: dotted 1px;
+  margin: 5px;
+  background-color: cadetblue;
+}
+
+.battleship-grid {
+  margin: 2vmin;
+  display: grid;
+  background-color: hsl(200, 100%, 50%);
+  grid-template-rows: repeat(10, 4vmin);
+  grid-template-columns: repeat(10, 4vmin);
+}
+
+.grid-computer {
+  background-color: hsl(200, 100%, 28%);
+}
+
+.grid-computer > .taken,
+.grid-computer > .boom {
+  background-color: hsl(200, 100%, 50%) !important;
+}
+
+.taken,
+.ship {
+  display: flex;
+}
+
+[class$="destroyer"], 
+[class*="destroyer-container"] {
+  background-color: rgb(27, 220, 20);
+}
+
+[class$="submarine"], 
+[class*="submarine-container"] {
+  background-color: rgb(20, 67, 220);
+}
+
+[class$="cruiser"], 
+[class*="cruiser-container"] {
+  background-color: rgb(217, 220, 20);
+}
+
+[class$="battleship"], 
+[class*="battleship-container"] {
+  background-color: rgb(187, 20, 220);
+}
+
+[class$="carrier"], 
+[class*="carrier-container"] {
+  background-color: crimson;
+}
+
+.grid-display {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ship > div {
+  width: 4vmin;
+  height: 4vmin;
+}
+
+#setup-buttons {
+  margin-right: 5px;
+}
+
+.ship {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1vmin;
+  width: calc(4vmin * var(--width, 1));
+  height: calc(4vmin * var(--height, 1));
+  
+}
+
+.battleship-grid div {
+  border: 1px dotted hsla(0, 0%, 100%, .2);
+}
+
+.destroyer-container {
+  --width: 2;
+}
+
+.destroyer-container-vertical {
+  --height: 2;
+  --width: 1;
+}
+
+.submarine-container,
+.cruiser-container {
+  --width: 3;
+}
+
+.submarine-container-vertical,
+.cruiser-container-vertical {
+  --height: 3;
+  --width: 1;
+}
+
+.battleship-container {
+  --width: 4;
+}
+
+.battleship-container-vertical {
+  --height: 4;
+  --width: 1;
+}
+
+.carrier-container {
+  --width: 5;
+}
+
+.carrier-container-vertical {
+  --height: 5;
+  --width: 1;
+}
+
+.miss,
+.boom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boom::after,
+.miss::after {
+  content: 'X';
+  font-weight: bold;
+  position: absolute;
+}
+
+.miss::after {
+  color: white;
+}
+
+.boom::after {
+  color: red;
+}
+
+.player {
+  margin: 2vmin;
+  font-variant: small-caps;
+  font-size: 15px;
+  justify-content: right;
+}
+
+.connected, .ready {
+  font-weight: normal;
+  opacity: .25;
+  text-decoration: line-through;
+}
+
+.connected.active,
+.ready.active {
+  opacity: 1;
+  text-decoration: none;
+}
+
+
