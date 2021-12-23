@@ -34,39 +34,27 @@
   </header>
   <main class="box box-m box-s">
     <div class="col-2 col-m-1 col-s-0 sideGrad2"></div>
-    <div id="rankings" class="col-10 col-m-11 col-s-12">
-      <table id="players">
-        <tr>
-          <th>Rank</th>
-          <th>Player name</th>
-          <th>Wins</th>
-          <th>Loses</th>
-        </tr>
-        <tr>
-          <td>1.</td>
-          <td>aaaaaa1212</td>
-          <td>10</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>2.</td>
-          <td>bbbbbb1414</td>
-          <td>9</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>3.</td>
-          <td>ccccccccc232</td>
-          <td>1</td>
-          <td>9</td>
-        </tr>
-        <tr>
-          <td>4.</td>
-          <td>ccccc</td>
-          <td>0</td>
-          <td>10</td>
-        </tr>
-      </table>
+    <div id="signInForm" class="col-10 col-m-11 col-s-12"> 
+      <form action="action_page.php">
+        <div class="signMsg">
+          <p>Fill in the form below to register an account. If you already have one, <a href="sign-in.html">sign in</a>. </p>
+        </div>
+        <div>
+          <label class="signLabel" for="email"><b>Email</b></label>
+          <input type="text" placeholder="example@domain.com" name="email" id="email" required>
+        </div>
+        <div>
+          <label class="signLabel" for="pswd"><b>Password</b></label>
+          <input type="password" placeholder="Password" name="pswd" id="pswd" required>
+        </div>
+        <div>
+          <label class="signLabel" for="pswdRepeat"><b>Repeat Password</b></label>
+          <input type="password" placeholder="Repeat Password" name="pswdRepeat" id="pswdRepeat" required>
+        </div>
+        <div>
+          <button type="submit" id="register" class="sign-up">Register</button>
+        </div>
+      </form> 
     </div>
   </main>
   <footer class="box box-m box-s">
@@ -75,3 +63,4 @@
     <div class="col-5 col-m-6 col-s-12">devs</div>
   </footer>
 </body>
+</html> 
