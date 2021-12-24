@@ -16,6 +16,13 @@
   font-weight: bold;
   font-variant: small-caps;
 }
+
+#info {
+  justify-content: center;
+  margin: auto;
+  display: none;
+}
+
 .game-info {
   justify-content: center;
   display: flex;
@@ -42,7 +49,7 @@
   flex-direction: column;
   border: dotted 1px;
   margin: 5px;
-  background-color: cadetblue;
+  background-color: rgba(0, 0, 0, 0.144);
 }
 
 .battleship-grid {
