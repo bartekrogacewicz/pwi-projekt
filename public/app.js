@@ -122,9 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ready button click
     startButton.addEventListener('click', () => {
-      if(allShipsPlaced) playGameMulti(socket);
-      else infoDisplay.innerHTML = "Please place all ships";
-    })
+      if(allShipsPlaced) {
+        playGameMulti(socket);
+        infoDisplay.style.display = 'none';
+      } else {
+        infoDisplay.style.display = 'block';
+        infoDisplay.innerHTML = "Please place all ships";
+      }
+    });
 
     // Setup event listeners for firing
     computerSquares.forEach(square => {
@@ -280,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log('dragend')
   }
 
-  // Game Logic for MultiPlayer
   function playGameMulti(socket) {
     setupButtons.style.display = 'none';
     if(isGameOver) return;
@@ -353,37 +357,56 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function checkForWins() {
-    let enemy = 'computer'
-    if(gameMode === 'multiPlayer') enemy = 'enemy'
+    let enemy = 'enemy'
     if (destroyerCount === 2) {
       destroyerCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "You sunk enemy destroyer !!";
     }
     if (submarineCount === 3) {
       submarineCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "You sunk enemy submarine !!";
     }
     if (cruiserCount === 3) {
       cruiserCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "You sunk enemy cruiser!!";
     }
     if (battleshipCount === 4) {
       battleshipCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "You sunk enemy battleship!!";
     }
     if (carrierCount === 5) {
       carrierCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "You sunk enemy carrier !!";
     }
     if (cpuDestroyerCount === 2) {
       cpuDestroyerCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "Enemy sunk your destroyer !!";
     }
     if (cpuSubmarineCount === 3) {
       cpuSubmarineCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "Enemy sunk your submarine !!";
     }
     if (cpuCruiserCount === 3) {
       cpuCruiserCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "Enemy sunk your cruiser !!";
     }
     if (cpuBattleshipCount === 4) {
       cpuBattleshipCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "Enemy sunk your battleship !!";
     }
     if (cpuCarrierCount === 5) {
       cpuCarrierCount = 10;
+      infoDisplay.style.display = 'block';
+      infoDisplay.innerHTML = "Enemy sunk your carrier !!";
     }
 
     if ((destroyerCount + submarineCount + cruiserCount + battleshipCount + carrierCount) === 50) {
@@ -398,6 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function gameOver() {
     isGameOver = true;
+    infoDisplay.style.display = 'none';
     gameSpace.style.display = 'none';
   }
 })

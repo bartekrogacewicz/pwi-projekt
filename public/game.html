@@ -3,17 +3,16 @@
     <head>
       <meta charset="utf-8">
       <meta name ="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Battleship Cafe</title>
-        <link rel="stylesheet" href="styles/style.css">
-        <link rel="stylesheet" href="styles/style2.css">
-        <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat&display=swap" rel="stylesheet">
+      <title>Battleship Cafe - Game</title>
+        <link rel="stylesheet" href="styles/game.css">
+        <link rel="stylesheet" href="styles/pages.css">
         <script>
           let gameMode = 'multiPlayer'
         </script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="app.js"></script>
     </head>
-    <body>
+    <body onbeforeunload="return warning()">
       <header class="box box-m box-s">
         <div id="logo">
           <a href="index.html" class="logo-btn">Battleships Open Seas</a>
@@ -70,6 +69,17 @@
               </div>
             </div>
           </div>
+          <div id="info" class="gameBtn"></div>
       </main>
+      <footer class="box box-m box-s">
+        <div class="col-2 col-m-1 col-s-0 sideGrad1"></div>
+        <div class="col-5 col-m-5 col-s-12">2021-2022</div>
+        <div class="col-5 col-m-6 col-s-12">FK & BR</div>
+      </footer>
+      <script>
+        function warning() {
+            return "Are you sure you want to leave a game ??";
+        }
+      </script>
     </body>
 </html>
