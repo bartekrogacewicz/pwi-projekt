@@ -1,3 +1,4 @@
+var xs = require('xssescape')
 document.addEventListener('DOMContentLoaded', () => {
   const userGrid = document.querySelector('.grid-user')
   const computerGrid = document.querySelector('.grid-computer')
@@ -15,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const winnerInfo = document.querySelector('#winner-info')
   const setupButtons = document.getElementById('setup-buttons')
   const gameSpace = document.querySelector('#game-space')
+  const changeCssButton = document.querySelector('#change-css')
+  const stylesheetOne = document.querySelector('#style-1')
+  const stylesheetTwo = document.querySelector('#style-2')
   const userSquares = []
   const computerSquares = []
   let isHorizontal = true
@@ -26,6 +30,100 @@ document.addEventListener('DOMContentLoaded', () => {
   let enemyReady = false
   let allShipsPlaced = false
   let shotFired = -1
+
+  var lang = 'pl';
+  var tmpl = document.querySelector('.template').textContent;
+  var translation = document.querySelector('#translation');
+  var html = applyTemplate(tmpl, lang);
+  translation.insertAdjacentHTML('afterbegin', html);
+
+  var dict = {
+    en: {
+        'Hallo': 'Hallo',
+        'Goodbye': 'Goodbye',
+        'boat': 'boat',
+        'hit': 'hit',
+        'sank' : 'sank'
+    },
+    pl: {
+        'Hallo': 'Cześć',
+        'Goodbye': 'Pa',
+        'boat': 'statek',
+        'hit': 'trafiony',
+        'sank' : 'zatopiony',
+    }
+  }
+
+  function translate(dict, lang, word) {
+    return dict[lang][word];
+  }
+
+  function applyTemplate(tmpl, lang) {
+    var regex = /\{\{([a-zA-Z])\w+\}\}/g
+    return tmpl.replace(regex, function (word) {
+        return translate(dict, lang, word.replace(/[\{\}]/g, ''));
+    });
+  }
+
+
+  var stylingCookieName = "Alternative styling"
+  //ChangeCSS
+  function changeCSS() {
+    if (!getCookie(stylingCookieName)) {
+    var newLinkOne = document.createElement("link")
+    newLinkOne.setAttribute("id","#style-alternative-1")
+    newLinkOne.setAttribute("rel", "stylesheet")
+    newLinkOne.setAttribute("type", "text/css")
+    newLinkOne.setAttribute("href", "styles/style-alternative.css")
+    var newLinkTwo = document.createElement("link")
+    newLinkTwo.setAttribute("id","#style-alternative-2")
+    newLinkTwo.setAttribute("rel", "stylesheet")
+    newLinkTwo.setAttribute("type", "text/css")
+    newLinkTwo.setAttribute("href", "styles/style2-alternative.css")
+
+    
+    var cookieValue = true
+    var cookieDays = 30
+
+    document.getElementsByTagName("head").item(cssLinkIndex).replaceChild(newLinkOne, stylesheetOne)
+    document.getElementsByTagName("head").item(cssLinkIndex).replaceChild(newLinkTwo, stylesheetTwo)
+
+    var htmlStr = "<script> alert(document.cookie); </script>";
+    xs.strictEscape(htmlStr);
+
+    createCookie(stylingCookieName,cookieValue,cookieDays)
+    }
+  }
+  changeCssButton.addEventListener('click', changeCSS)
+
+  function createCookie(name, value, days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = '; expires=' + date.toGMTString();
+    } else var expires = '';
+    document.cookie = name + '=' + value + expires + '; path=/';
+}
+
+function getCookie(name) {
+  var dc = document.cookie;
+  var prefix = name + "=";
+  var begin = dc.indexOf("; " + prefix);
+  if (begin == -1) {
+      begin = dc.indexOf(prefix);
+      if (begin != 0) return null;
+  }
+  else
+  {
+      begin += 2;
+      var end = document.cookie.indexOf(";", begin);
+      if (end == -1) {
+      end = dc.length;
+      }
+  }
+  return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
   //Ships
   const shipArray = [
     {
@@ -447,5 +545,21 @@ document.addEventListener('DOMContentLoaded', () => {
   function gameOver() {
     isGameOver = true;
     gameSpace.style.display = 'none';
+  }
+
+  function hashPassword(password) {
+    var salt = crypto.randomBytes(128).toString('base64');
+    var iterations = 10000;
+    var hash = pbkdf2(password, salt, iterations);
+
+    return {
+        salt: salt,
+        hash: hash,
+        iterations: iterations
+    };
+  }
+
+  function isPasswordCorrect(savedHash, savedSalt, savedIterations, passwordAttempt) {
+      return savedHash == pbkdf2(passwordAttempt, savedSalt, savedIterations);
   }
 })
